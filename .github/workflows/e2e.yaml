@@ -1,6 +1,9 @@
 name: "Run E2E Tests"
 on:
   workflow_dispatch:
+    inputs:
+      branch:
+        required: true
   push:
     branches:
       - main
@@ -22,4 +25,4 @@ jobs:
           controller-url: jumpstarter-dev/jumpstarter-controller
           controller-ref: main
           jumpstarter-url: michalskrivanek/jumpstarter
-          jumpstarter-ref: ${{ github.ref }}
+          jumpstarter-ref: ${{ github.event.inputs.branch }}
